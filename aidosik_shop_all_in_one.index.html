@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aidosik Streetwears - Официальный магазин</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* [CSS код остается тем же, для краткости я его опускаю, но в вашем файле он должен быть] */
+        body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #ffffff; color: #333; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+        a:hover { color: #555; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; border-bottom: 1px solid #eee; }
+        .logo { font-size: 24px; font-weight: 900; letter-spacing: 1px; color: #000; }
+        .nav a { margin: 0 15px; font-weight: 500; text-transform: uppercase; }
+        .user-actions { display: flex; gap: 25px; align-items: center; }
+        .user-actions a { color: #333; font-size: 14px; }
+        .tg-support { color: #0088cc; font-weight: bold; font-size: 14px; margin-right: 10px; display: flex; align-items: center; gap: 5px; }
+        .toolbar { display: flex; justify-content: flex-start; align-items: center; padding: 10px 40px; gap: 15px; border-bottom: 1px solid #eee; margin-bottom: 20px; }
+        .filter-btn { background-color: #f0f0f0; border: 1px solid #ccc; padding: 8px 15px; cursor: pointer; font-weight: bold; border-radius: 4px; font-size: 14px; display: flex; align-items: center; gap: 5px; }
+        .search-input { flex-grow: 1; padding: 8px 15px; border: 1px solid #ccc; border-radius: 4px; max-width: 500px; font-size: 14px; }
+        .section-title { text-align: left; margin-top: 40px; margin-bottom: 20px; padding-left: 20px; font-size: 22px; font-weight: 700; border-bottom: 2px solid #000; display: inline-block; padding-bottom: 5px; }
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 0 20px; }
+        .product-card { border: 1px solid #eee; padding: 15px; text-align: center; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; }
+        .product-image { width: 100%; height: 300px; object-fit: cover; margin-bottom: 15px; border-radius: 4px; }
+        .product-name { font-weight: 600; margin: 10px 0 5px 0; font-size: 16px; }
+        .product-price { font-size: 18px; color: #000; font-weight: 900; margin-bottom: 15px; }
+        .add-to-cart-btn { background-color: #000; color: #fff; border: none; padding: 12px 25px; cursor: pointer; border-radius: 50px; font-weight: bold; transition: background-color 0.3s, transform 0.1s; text-transform: uppercase; font-size: 14px; margin-top: auto; }
+        .add-to-cart-btn:hover { background-color: #333; }
+        .add-to-cart-btn:active { transform: scale(0.98); }
+        .footer { text-align: center; padding: 20px; margin-top: 60px; border-top: 1px solid #eee; color: #777; font-size: 12px; background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">AIDOSIK STREETWEARS</div>
+        <nav class="nav">
+            <a href="#">Каталог</a>
+            <a href="#">О нас</a>
+            <a href="#">Доставка</a>
+        </nav>
+        <div class="user-actions">
+            <a href="#" class="tg-support" title="Техподдержка в Telegram">
+                <i class="fab fa-telegram-plane"></i> @Aidosikshop
+            </a>
+            <a href="#"><i class="fas fa-heart"></i> Избранное</a>
+            <a href="#"><i class="fas fa-shopping-cart"></i> Корзина</a>
+        </div>
+    </header>
+
+    <section class="toolbar">
+        <button class="filter-btn">
+            <i class="fas fa-sliders-h"></i> ФИЛЬТР
+        </button>
+        <input type="text" class="search-input" placeholder="Поиск по товарам...">
+    </section>
+
+    <main class="container">
+        
+        <h2 class="section-title">👖 ДЖИНСЫ BAGGY (17 990 тг)</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="1000344484.jpg.jpeg" alt="Серые джинсы Baggy" class="product-image">
+                <p class="product-name">Джинсы Baggy "Urban Grey"</p>
+                <p class="product-price">17 990 тг</p>
+                <button class="add-to-cart-btn">В корзину</button>
+            </div>
+            <div class="product-card">
+                <img src="1000344483.jpg.jpeg" alt="Черные джинсы Baggy с волнистым краем" class="product-image">
+                <p class="product-name">Джинсы Baggy "Wave Black"</p>
+                <p class="product-price">17 990 тг</p>
+                <button class="add-to-cart-btn">В корзину</button>
+            </div>
+            <div class="product-card">
+                <img src="1000344485.jpg.jpeg" alt="Черные джинсы с вышивкой на кармане" class="product-image">
+                <p class="product-name">Джинсы Baggy "Sakura"</p>
+                <p class="product-price">17 990 тг</p>
+                <button class="add-to-cart-btn">В корзину</button>
+            </div>
+        </div>
+
+        <h2 class="section-title">🧥 ЗИПКИ (17 990 тг)</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="1000344488.jpg.jpeg" alt="Черная зипка Chrome Hearts style" class="product-image">
+                <p class="product-name">Зипка "Chrome Vibe"</p>
+                <p class="product-price">17 990 тг</p>
+                <button class="add-to-cart-btn">В корзину</button>
+            </div>
+            <div class="product-card">
+                <img src="1000344489.jpg.jpeg" alt="Черная зипка Polo Japan Edition" class="product-image">
+                <p class="product-name">Зипка "Polo Japan Edition"</p>
+                <p class="product-price">17 990 тг</p>
+                <button class="add-to-cart-btn">В корзину</button>
+            </div>
+            <div class="product-card">
+                <img src="1000344486.jpg.jpeg" alt="Белая зипка с флагом" class="product-image">
+                <p class="product-name">Зипка "Patriot Flag"</p>
+                <p class="product-price">17 990 тг</p>
+                <button class="add-to-cart-btn">В корзину</button>
+            </div>
+        </div>
+
+        <h2 class="section-title">👚 ФУТБОЛКИ ОВЕРСАЙЗ (9 990 тг)</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="1000344492.jpg.jpeg" alt="Футболка Dallas Cowboys" class="product-image">
+                <p class="product-name">Футболка Oversize "Sport Style #22"</p>
+                <p class="product-price">9 990 тг</p>
+                <button class="add-to-cart-btn">В корзину</button>
+            </div>
+            <div class="product-card">
+                <img src="1000344491.jpg.jpeg" alt="Черная футболка ETRANGE" class="product-image">
+                <p class="product-name">Футболка Oversize "ETRANGE"</p>
+                <p class="product-price">9 990 тг</p>
+                <button class="add-to-cart-btn">В корзину</button>
+            </div>
+            <div class="product-card">
+                <img src="1000344490.jpg.jpeg" alt="Белая футболка Stussy с собаками" class="product-image">
+                <p class="product-name">Футболка Oversize "Stussy Dogs"</p>
+                <p class="product-price">9 990 тг</p>
+                <button class="add-to-cart-btn">В корзину</button>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        © 2025 **Aidosik Streetwears**. Все права защищены.
+    </footer>
+
+</body>
+</html>
