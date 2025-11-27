@@ -368,34 +368,39 @@
     </footer>
     
     <script>
+        const allSections = document.querySelectorAll('.content-section');
+        const toolbar = document.querySelector('.toolbar');
+
         // Функция для скрытия всех разделов и показа целевого
         function showSection(targetId) {
             // 1. Скрываем все разделы
-            document.querySelectorAll('.content-section').forEach(section => {
+            allSections.forEach(section => {
                 section.classList.remove('active');
             });
-
+            
             // 2. Показываем целевой раздел
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
                 targetElement.classList.add('active');
-                // Прокрутка к началу раздела (для удобства пользователя)
-                window.scrollTo({
-                    top: targetElement.offsetTop - 70, // -70px для отступа от шапки
-                    behavior: 'smooth'
-                });
-            } else if (targetId === 'catalog') {
-                 // Если нет якоря, но мы на главной странице
-                 document.getElementById('catalog').classList.add('active');
             }
+
+            // 3. Управление видимостью тулбара (Фильтр/Поиск)
+            // Показываем тулбар, если мы находимся на странице списка товаров или детальной странице
+            if (targetId.includes('_list') || targetId.includes('product_')) {
+                toolbar.style.display = 'flex';
+            } else {
+                toolbar.style.display = 'none';
+            }
+
+            // Прокрутка наверх (для удобства)
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
-        // Обработчик кликов по всем внутренним ссылкам
-        document.querySelectorAll('.nav a, .category-card a, .product-name a, .category-link').forEach(link => {
-            // Игнорируем внешние ссылки (Telegram)
+        // 4. Обработчик кликов по всем внутренним ссылкам
+        document.querySelectorAll('.nav-link, .category-link, .product-name a').forEach(link => {
+            // Игнорируем внешние ссылки (Telegram/Корзина)
             if (link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
                 link.addEventListener('click', function(event) {
-                    // Останавливаем стандартный переход (чтобы не прыгать)
                     event.preventDefault(); 
                     
                     const hash = this.getAttribute('href');
@@ -406,22 +411,21 @@
             }
         });
         
-        // Обработка загрузки страницы (чтобы показать правильный раздел при загрузке или при переходе по ссылке извне)
+        // 5. Обработка загрузки страницы
         function handleInitialLoad() {
             const currentHash = window.location.hash;
             if (currentHash && currentHash.length > 1) {
-                // Если есть якорь в URL (например, #about), показываем его
                 showSection(currentHash.substring(1));
             } else {
-                // Иначе показываем главную страницу
-                showSection('catalog');
+                // *** ИЗМЕНЕНИЕ: Мы НЕ вызываем showSection('catalog') здесь.
+                // *** Страница останется пустой, пока пользователь не кликнет.
             }
         }
 
         // Запускаем при загрузке страницы
         window.addEventListener('load', handleInitialLoad);
         
-        // Код для кнопки ФИЛЬТР (открывает/закрывает меню)
+        // 6. Код для кнопки ФИЛЬТР (открывает/закрывает меню)
         document.getElementById('filter-toggle').addEventListener('click', function() {
             var menu = document.getElementById('filter-menu');
             if (menu.style.display === 'block') {
@@ -431,27 +435,24 @@
             }
         });
         
-        // Код для выбора размера (добавляет класс 'selected')
+        // 7. Код для выбора размера и обновления ссылки Telegram
         document.querySelectorAll('.product-details').forEach(productPage => {
             productPage.querySelectorAll('.size-options').forEach(group => {
                 group.addEventListener('click', function(event) {
                     if (event.target.classList.contains('size-option')) {
-                        // 1. Убираем класс у всех
+                        // 1. Обновляем класс selected
                         group.querySelectorAll('.size-option').forEach(option => {
                             option.classList.remove('selected');
                         });
-                        // 2. Добавляем класс к выбранному
                         event.target.classList.add('selected');
                         
-                        // 3. Обновляем ссылку на Telegram
+                        // 2. Обновляем ссылку на Telegram
                         const selectedSize = event.target.dataset.size;
                         const buyBtn = productPage.querySelector('.buy-btn-detail');
                         
-                        // Получаем исходный текст (из title/h1)
                         const productTitle = productPage.querySelector('h1').textContent;
                         const productPrice = productPage.querySelector('.price').textContent;
                         
-                        // Формируем новую ссылку
                         const newText = `Здравствуйте, хочу заказать: ${productTitle}, размер ${selectedSize}, ${productPrice}.`;
                         const newHref = `https://t.me/Aidosikshop?text=${encodeURIComponent(newText)}`;
                         
@@ -462,5 +463,23 @@
         });
 
     </script>
-    </body>
-</html>
+    ```
+
+### 🖼️ Как поставить фото на каталог (плитки)?
+
+В коде, который я вам отправил ранее, фотографии уже вставлены в плитки каталога:
+
+```html
+<div id="catalog" class="content-section active category-view">
+    <h1 class="section-title">🛍️ ВЫБЕРИТЕ КАТЕГОРИЮ</h1>
+    <div class="category-grid">
+        <a href="#jeans_list" class="category-card category-link">
+            <img src="1000344484.jpg" alt="Джинсы">
+            <div class="category-overlay">Джинсы</div>
+        </a>
+        <a href="#zipki_list" class="category-card category-link">
+            <img src="1000344488.jpg" alt="Зипки">
+            <div class="category-overlay">Зипки</div>
+        </a>
+        </div>
+</div>
